@@ -1,0 +1,13 @@
+{
+  "name": "bandejao-usp",
+  "version": "1.0.0",
+  "description": "Bot que posta no Twitter o cardápio dos restaurantes da USP de São Paulo.",
+  "main": "main.js",
+  "repository": "https://github.com/ViniciusFH/bandejao-usp.git",
+  "author": "ViniciusFH & schimidtpedro",
+  "license": "MIT",
+  "dependencies": {
+    "request-promise-native": "^1.0.8",
+    "twitter": "^1.7.1"
+  }
+}

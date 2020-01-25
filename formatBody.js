@@ -22,6 +22,9 @@ module.exports = function(body){
 				.filter(item => item !== 'Feijão')
 		})
 
+		cardapio.filter(item => item)
+
+	console.log(cardapio)
 
 	return cardapio;
 }
