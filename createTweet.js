@@ -4,11 +4,11 @@ module.exports = function(arrayCardapio, restaurant){
 
 	arrayCardapio.forEach((item, index) => arrayCardapio[index] = '· ' + item)
 
-	let header = ['H']
+	let header = `Hoje no ${restaurant} tem:\n`
 
-	return arrayCardapio;
+	let tweet = header + arrayCardapio.join('\n')
 
-	let tweet = ''
+	return tweet;
 
 	postTweet(restaurants['Central'].cardapio.join('\n· '))
 

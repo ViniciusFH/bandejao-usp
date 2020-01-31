@@ -11,20 +11,29 @@ async function main() {
   		return new Promise(resolve => setTimeout(resolve, ms));
 	}
 
-	const restaurants = {
-		'Central' : {'ID' : 6},
-		'Prefeitura' : {'ID' : 7},
-		'Fisica' : {'ID' : 8},
-		'Quimica' : {'ID' : 9}
-	}
+	const restaurantsID = {
+		'Central' : 6,
+		'Prefeitura' : 7,
+		'Fisica' : 8,
+		'Quimica' : 9
+	};
 
-	for(let name in restaurants) {
-		restaurants[name].cardapio = formatBody(await getBody(restaurants[name].ID))
-		if (restaurants[name].cardapio.length > 0) {
-			// console.log(createTweet(restaurants[name].cardapio, name))
-		}
-	}
+	const date = new Date().toLocaleString()
 
+	for(let name in restaurantsID) {
+
+		let cardapio = formatBody(await getBody(restaurantsID[name]));
+
+		if (cardapio.length) {
+
+			let tweet = createTweet(cardapio, name)
+
+			postTweet(tweet);
+
+			await sleep(10000);
+		};
+
+	};
 	
 };
 
