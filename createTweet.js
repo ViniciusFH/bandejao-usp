@@ -4,9 +4,14 @@ module.exports = function(arrayCardapio, restaurant){
 	
 	arrayCardapio.forEach((item, index) => arrayCardapio[index] = '· ' + item);
 	
-	let de_da = restaurant == 'Quimica' ? `da` : `do`;
+	let deDa = {
+        Central: "do",
+        Quimica: "da",
+        Fisica: "da",
+        Prefeitura: "do"
+	}
 	
-	let header = `Hoje no ${meal} ${de_da} ${restaurant} tem:\n`;
+	let header = `Hoje no ${meal} ${deDa[restaurant]} ${restaurant} tem:\n`;
 	
 	let tweet = header + arrayCardapio.join('\n');
 	
