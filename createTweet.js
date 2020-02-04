@@ -6,8 +6,8 @@ module.exports = function(arrayCardapio, restaurant){
 	
 	let deDa = {
         Central: "do",
-        Quimica: "da",
-        Fisica: "da",
+        Química: "da",
+        Física: "da",
         Prefeitura: "do"
 	}
 	
@@ -17,6 +17,4 @@ module.exports = function(arrayCardapio, restaurant){
 	
 	return tweet;
 	
-	postTweet(restaurants['Central'].cardapio.join('\n· '))
-
 }
