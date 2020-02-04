@@ -6,4 +6,4 @@ module.exports = function(payload){
 		if(error) throw error;
 	});
 
-}
+};

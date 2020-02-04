@@ -6,19 +6,16 @@ async function main() {
 	const postTweet = require('./postTweet');
 
 	// Função para dar um espaço de tempo entre os tweets.
-	// Para usar: await sleep(2000)
 	function sleep(ms) {
   		return new Promise(resolve => setTimeout(resolve, ms));
-	}
+	};
 
 	const restaurantsID = {
 		'Central' : 6,
 		'Prefeitura' : 7,
-		'Fisica' : 8,
-		'Quimica' : 9
+		'Física' : 8,
+		'Química' : 9
 	};
-
-	const date = new Date().toLocaleString()
 
 	for(let name in restaurantsID) {
 
