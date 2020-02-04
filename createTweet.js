@@ -11,7 +11,7 @@ module.exports = function(arrayCardapio, restaurant){
         Prefeitura: "do"
 	}
 	
-	let header = `Hoje no ${meal} ${deDa[restaurant]} ${restaurant} tem:\n`;
+	let header = `Hoje no ${meal} ${deDa[restaurant]} ${restaurant} tem:\n\n`;
 	
 	let tweet = header + arrayCardapio.join('\n');
 	
