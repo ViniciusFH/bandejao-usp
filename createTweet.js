@@ -19,7 +19,7 @@ module.exports = function(menu, restaurant){
 	
 	let tweet = header + menu.food.join('\n');
 
-	if (menu.info.length) {
+	if (menu.info.length && menu.food.length) {
 
 		let infoHeader = `\n\n*${menu.info[0]}: ${menu.info[1].replace('  ', ' e ').toLowerCase()}.`
 
