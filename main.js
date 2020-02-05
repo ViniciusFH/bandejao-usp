@@ -15,15 +15,18 @@ async function main() {
 		'Prefeitura' : 7,
 		'Física' : 8,
 		'Química' : 9
+		// 'Saúde Pública' : 11
 	};
 
 	for(let name in restaurantsID) {
 
-		let cardapio = formatBody(await getBody(restaurantsID[name]));
+		let menu = formatBody(await getBody(restaurantsID[name]));
 
-		if (cardapio.length) {
+		if (menu.food.length) {
 
-			let tweet = createTweet(cardapio, name)
+			let tweet = createTweet(menu, name)
+
+			// console.log(tweet)
 
 			postTweet(tweet);
 

@@ -8,36 +8,68 @@ module.exports = function(body){
 	const weekDay = date.getDay() + 1;
 	const meal = (date.getHours() < 12) ? 'A' : 'J';
 
-	let cardapio = [];
+	const menu = {
+
+		food: [],
+		meal,
+		info: []
+
+	};
 
 	// Filtra o dia da semana e a refeição
-	let responseOfTheDay = responseObject.filter(menu => {
-		return menu.diasemana === weekDay && menu.tiprfi === meal;
+	let responseOfTheDay = responseObject.filter(item => {
+		return item.diasemana === weekDay && item.tiprfi === meal;
 	});
 
 	// Seleciona o menu
-	let menu = responseOfTheDay[0].cdpdia
+	let dayMenu = responseOfTheDay[0].cdpdia
+
+	// Regex utilizado para remover itens básicos do cardápio e informações de
+	// feriado ou restaurante fechado.
+	let removeItems = /arroz( integral)?|minipão|refresco|feriado|fechado|funcionamento|abertura/i;
 
 	// Se não existe 'arroz' no menu, não há cardapio
 	// Ignoramos estes casos
-	if (menu.indexOf('arroz') !== -1) {
+	if (dayMenu.indexOf('arroz') !== -1) {
 
-		cardapio = menu
-			// Remove os itens básicos do cardápio
-			.replace(/arroz ?(integral)?|minipão|refresco|\//gi, '')
-			// Remove Feriado e Fechado
-			.replace(/feriado|fechado/gi, '')
-			// Substitui "opção" por "ou" para fazer um texto mais fluido
-			.replace(/<br>Opção:/gi, ' ou')
+		menu.food = firstUpperCase(dayMenu
+			// Substitui "Opção" por "ou" para fazer um texto mais fluido
+			.replace(/ *<br>Opção:/gi, ' ou')
 			// Cria um array
 			.split(/<br>/)
-			// Remove elementos false ('', null, undefined) e string com espaço em branco
-			.filter(item => item && /\S/.test(item))
+			// Remove elementos vazios e aqueles identificados no regex mencionado acima
+			.filter(item => {
+
+				if (/funcionamento|abertura/i.test(item)) {
+
+					menu.info.push(item);
+				}
+
+				return item && !removeItems.test(item)
+			})
 			// Deixa a primeira letra de cada item do array maiúscula
 			.map(item => item.slice(0,1).toUpperCase() + item.trim().slice(1).toLowerCase())
-			// Remove 'feijão' (deixa 'feijão preto')
-			.filter(item => item !== 'Feijão')
+		)
 	}
 
-	return cardapio;
+	if (menu.info.length) {
+
+		menu.info = firstUpperCase(menu.info);
+	};
+
+	return menu;
 }
+
+function firstUpperCase(array) {
+
+	return array
+		.map(item => item
+			.slice(0,1)
+			.toUpperCase() +
+			item
+				.trim()
+				.slice(1)
+				.toLowerCase())
+
+	return array;
+};
