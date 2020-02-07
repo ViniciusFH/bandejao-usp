@@ -6,7 +6,7 @@ module.exports = function(body){
 
 	const date = new Date();
 	const weekDay = date.getDay() + 1;
-	const meal = (date.getHours() < 12) ? 'A' : 'J';
+	const meal = (date.getHours() < 15) ? 'A' : 'J';
 
 	const menu = {
 
