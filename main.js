@@ -14,7 +14,7 @@ async function main() {
 		'Central' : 6,
 		'Prefeitura' : 7,
 		'Física' : 8,
-		'Química' : 9
+		'Química' : 9,
 		// 'Saúde Pública' : 11
 	};
 
@@ -30,7 +30,7 @@ async function main() {
 
 			postTweet(tweet);
 
-			await sleep(10000);
+			await sleep(60000);
 		};
 
 	};
