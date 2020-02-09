@@ -12,9 +12,7 @@ module.exports = function(menu, restaurant){
         Química: "da",
         Física: "da",
         Prefeitura: "do",
-        'Saúde Pública': 'da',
-        'Escola de Enfermagem': 'da',
-        'EACH': 'da'
+        'Saúde Pública': 'da'
 	}
 	
 	let header = `Hoje no ${meal} ${doDa[restaurant]} ${restaurant} tem:\n\n`;
