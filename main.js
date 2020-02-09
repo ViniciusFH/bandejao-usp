@@ -15,24 +15,24 @@ async function main() {
 		'Prefeitura' : 7,
 		'Física' : 8,
 		'Química' : 9,
-		// 'Saúde Pública' : 11
+		'Saúde Pública' : 11,
+		'Escola de Enfermagem': 12,
+		'EACH': 13
 	};
 
-	for(let name in restaurantsID) {
+	let name = process.argv[2];
 
-		let menu = formatBody(await getBody(restaurantsID[name]));
+	let menu = formatBody(await getBody(restaurantsID[name]));
 
-		if (menu.food.length) {
+	if (menu.food.length) {
 
-			let tweet = createTweet(menu, name)
+		let tweet = createTweet(menu, name)
 
-			// console.log(tweet)
+		console.log(tweet)
 
-			postTweet(tweet);
+		// postTweet(tweet);
 
-			await sleep(60000);
-		};
-
+		// await sleep(60000);
 	};
 	
 };
