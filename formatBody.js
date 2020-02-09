@@ -5,6 +5,7 @@ module.exports = function(body){
 	let responseObject = eval('(' + rawResponse + ')');
 
 	const date = new Date();
+
 	const weekDay = date.getDay() + 1;
 	const meal = (date.getHours() < 15) ? 'A' : 'J';
 
@@ -27,8 +28,10 @@ module.exports = function(body){
 	// Seleciona o menu dentro do objeto complexo.
 	let dayMenu = responseOfTheDay[0].cdpdia;
 
-	// Se não existe 'arroz' no menu, não há cardapio
-	// Ignoramos estes casos
+	if (!dayMenu) return menu;
+
+	// Se não existe 'arroz' no menu, não há cardapio.
+	// Ignoramos estes casos.
 	if (dayMenu.indexOf('arroz') === -1) return menu;
 
 	// Regex utilizado para remover itens básicos do cardápio e informações de
@@ -50,9 +53,13 @@ module.exports = function(body){
 
 			return item && !removeItems.test(item)
 		})
-		// Deixa a primeira letra de cada item do array maiúscula.
-		.map(item => item.slice(0,1).toUpperCase() + item.trim().slice(1).toLowerCase())
+		// Substitui / por ou.
+		.map(item => item.replace('/', ' ou '))
 	)
+
+	// A função saladaMix junta vários "Salada de x" em um único
+	// "Saladas de x, y ou z".
+	menu.food = saladaMix(menu.food);
 
 	if (menu.info.length) {
 
@@ -63,7 +70,7 @@ module.exports = function(body){
 }
 
 function firstUpperCase(array) {
-
+// Deixa a primeira letra de cada item do array maiúscula.
 	return array
 		.map(item => item
 			.slice(0,1)
@@ -75,3 +82,32 @@ function firstUpperCase(array) {
 
 	return array;
 };
+
+function saladaMix(menu) {
+
+	let saladas = menu.filter(item => /salada/i.test(item));
+
+	// Se não há saladas ou há apenas uma, nada de ver feito.
+	if (saladas.length <= 1) return menu;
+
+	// Remove as saladas separadas do menu.
+	for (let s of saladas) {
+		menu.splice(menu.indexOf(s), 1)
+	};
+
+	let mix = saladas.reduce((msg, item) => {
+
+		let append = ',';
+
+		if (saladas.length - 2 === saladas.indexOf(item)) append = ' ou'
+		if (saladas.length - 1 === saladas.indexOf(item)) append = '.'
+
+		return msg + item.substr(9) + append;
+
+	}, 'Saladas de')
+
+	// Adiciona na penúltima posição.
+	menu.splice(menu.length - 1, 0, mix);
+
+	return menu;
+}
