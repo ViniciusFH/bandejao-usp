@@ -40,7 +40,7 @@ module.exports = function(body){
 
 	menu.food = firstUpperCase(dayMenu
 		// Substitui "Opção" por "ou" para fazer um texto mais fluido.
-		.replace(/ *<br>Opção:/gi, ' ou')
+		.replace(/ *<br>Opção: */i, ' ou ')
 		// Cria um array
 		.split(/<br>/)
 		// Remove elementos vazios e aqueles identificados no regex mencionado acima.
@@ -49,7 +49,7 @@ module.exports = function(body){
 			if (/funcionamento|abertura/i.test(item)) {
 
 				menu.info.push(item);
-			}
+			};
 
 			return item && !removeItems.test(item)
 		})
@@ -67,7 +67,7 @@ module.exports = function(body){
 	};
 
 	return menu;
-}
+};
 
 function firstUpperCase(array) {
 // Deixa a primeira letra de cada item do array maiúscula.
@@ -110,4 +110,4 @@ function saladaMix(menu) {
 	menu.splice(menu.length - 1, 0, mix);
 
 	return menu;
-}
+};
