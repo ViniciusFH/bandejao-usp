@@ -32,7 +32,7 @@ module.exports = function(body){
 
 	// Se não existe 'arroz' no menu, não há cardapio.
 	// Ignoramos estes casos.
-	if (dayMenu.indexOf('arroz') === -1) return menu;
+	if (!/arroz/i.test(dayMenu)) return menu;
 
 	// Regex utilizado para remover itens básicos do cardápio e informações de
 	// feriado ou restaurante fechado.
@@ -100,7 +100,7 @@ function saladaMix(menu) {
 		let append = ',';
 
 		if (saladas.length - 2 === saladas.indexOf(item)) append = ' ou'
-		if (saladas.length - 1 === saladas.indexOf(item)) append = '.'
+		if (saladas.length - 1 === saladas.indexOf(item)) append = ''
 
 		return msg + item.substr(9) + append;
 
