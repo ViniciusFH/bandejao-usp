@@ -11,7 +11,7 @@ module.exports = function(menu, restaurant){
         Central: "do",
         Química: "da",
         Física: "da",
-        Prefeitura: "do",
+        Prefeitura: "da",
         'Saúde Pública': 'da',
         'Escola de Enfermagem': 'da',
         'EACH': 'da'
