@@ -36,9 +36,9 @@ async function main() {
 
 		let tweet = createTweet(menu, bandejao)
 
-		console.log(tweet);
+		// console.log(tweet);
 
-		// postTweet(tweet);
+		postTweet(tweet);
 
 	};
 	
