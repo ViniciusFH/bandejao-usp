@@ -1,4 +1,4 @@
-module.exports = function(menu, restaurant){
+module.exports = function(menu, bandejao){
 	
 	const meal = {
 		'A': 'almoço',
@@ -7,17 +7,7 @@ module.exports = function(menu, restaurant){
 	
 	menu.food.forEach((item, index) => menu.food[index] = '· ' + item);
 	
-	let doDa = {
-        Central: "do",
-        Química: "da",
-        Física: "da",
-        Prefeitura: "da",
-        'Saúde Pública': 'da',
-        'Escola de Enfermagem': 'da',
-        'EACH': 'da'
-	}
-	
-	let header = `Hoje no ${meal} ${doDa[restaurant]} ${restaurant} tem:\n\n`;
+	let header = `Hoje no ${meal} d${bandejao.gender} ${bandejao.name} tem:\n\n`;
 	
 	let tweet = header + menu.food.join('\n');
 
