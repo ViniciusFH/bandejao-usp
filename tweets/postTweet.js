@@ -1,4 +1,4 @@
-const client = require('./twitter-client.js');
+const client = require('./client.js');
 
 module.exports = function(payload){
 
