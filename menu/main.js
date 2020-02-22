@@ -7,7 +7,7 @@ async function main() {
 	// Transforma o objeto retornado na função acima e cria uma string, o tweet em si.
 	const createTweet = require('./createTweet');
 	// Usa o client do twitter para, enfim, postar o tweet.
-	const postTweet = require('../tweets/postTweet.js');
+	const postTweet = require('../api/postTweet.js');
 	// Um objeto com todos os bandejões instanciados da classe Restaurant.
 	const restaurants = require('../Restaurants.js');
 	// Nome da variável do bandejão recebida pelo comando do terminal.

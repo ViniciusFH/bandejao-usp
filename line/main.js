@@ -1,10 +1,10 @@
-const getDMs = require('../tweets/getDMs.js');
+const getDMs = require('../api/getDMs.js');
 const filterDMs = require('./filterDMs.js');
 const indentifyClaim = require('./indentifyClaim.js');
 const getLatestTweets = require('../tweets/getLatestTweets.js');
 const isItAWarn = require('./isItAWarn.js');
 const createTweet = require('./createTweet.js');
-const postTweet = require('../tweets/postTweet.js');
+const postTweet = require('../api/postTweet.js');
 
 const main = async () => {
 

@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "request-promise-native": "^1.0.8",
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "twitter-autohook": "^1.4.1"
   }
 }
