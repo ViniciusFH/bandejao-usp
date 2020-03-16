@@ -2,11 +2,19 @@ const client = require('./client.js');
 
 const getDMs = () => {
 	
-	return client.get('/direct_messages/events/list.json', {})
+	return new Promise((resolve, reject) => {
 
-		.then(list => list.events)
+		client.get('/direct_messages/events/list', {}, (err, data, response) => {
 
-		.catch(err => [])
+			if (err) return resolve(null);
+
+			if (!data.events) return resolve(null);
+
+			return resolve(data.events);
+
+		})
+
+	})
 
 };
 

@@ -2,11 +2,17 @@ const client = require('./client.js');
 
 const getLatestTweets = () => {
 	
-	return client.get('/statuses/user_timeline.json', {})
+	return new Promise((resolve, reject) => {
 
-		.then(a => a)
+		client.get('/statuses/user_timeline', {}, (err, data, response) => {
 
-		.catch(err => err)
+			if (err) return resolve(null);
+
+			return resolve(data);
+
+		})
+
+	}) 
 
 };
 
