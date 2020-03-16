@@ -13,7 +13,9 @@ module.exports = (DMText, userID) => {
 	// Precisamos de ao menos um restaurante.
 	if (!inteRest.length) {
 
-		sendDM('Por favor, seja mais específico.', userID);
+		sendDM('Por favor, seja mais específico :)', userID);
+
+		return;
 	};
 
 	// Extraímos da DM as refeições
@@ -36,6 +38,8 @@ module.exports = (DMText, userID) => {
 	let DMAnswer = scheduleMessage(inteRest[0], inteMeals, inteDays);
 
 	sendDM(DMAnswer, userID);
+
+	return;
 
 };
 
