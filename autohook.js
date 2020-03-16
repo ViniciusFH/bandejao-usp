@@ -2,6 +2,7 @@ const { Autohook } = require('twitter-autohook');
 const getSubject = require('./DMSubject.js');
 const lineHandler = require('./line/main.js');
 const scheduleHandler = require('./schedule/main.js');
+const keys = require('./api/client.js').config;
 
 
 (async start => {
@@ -49,7 +50,7 @@ const scheduleHandler = require('./schedule/main.js');
     await webhook.start();
     
     // Subscribes to your own user's activity
-    await webhook.subscribe({oauth_token: process.env.TWITTER_ACCESS_TOKEN, oauth_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET});
+    await webhook.subscribe({oauth_token: keys.access_token, oauth_token_secret: keys.access_token_secret});
 
 
 
