@@ -6,7 +6,7 @@ const isItAWarn = require('./isItAWarn.js');
 const createTweet = require('./createTweet.js');
 const postTweet = require('../api/postTweet.js');
 
-/*module.exports =*/ (async () => {
+module.exports = (async () => {
 
 	console.log('Pegando todas as DMs...');
 
@@ -52,7 +52,7 @@ const postTweet = require('../api/postTweet.js');
 
 					const tweet = createTweet(claimedRestaurants);
 
-					console.log(tweet);
+					postTweet(tweet);
 
 				};
 
