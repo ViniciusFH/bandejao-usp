@@ -1,13 +1,15 @@
-module.exports = function(menu, bandejao){
+const mapMeals = {
+	'A': 'almoço',
+	'J': 'jantar'
+};
+
+module.exports = (menu, bandejao) => {
 	
-	const meal = {
-		'A': 'almoço',
-		'J': 'jantar'
-	}[menu.meal];
+	const meal = mapMeals[menu.meal];
 	
 	menu.food.forEach((item, index) => menu.food[index] = '· ' + item);
 	
-	let header = `Hoje no ${meal} d${bandejao.gender} ${bandejao.name} tem:\n\n`;
+	const header = `Hoje no ${meal} d${bandejao.gender} ${bandejao.name} tem:\n\n`;
 	
 	let tweet = header + menu.food.join('\n');
 

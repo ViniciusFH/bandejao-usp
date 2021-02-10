@@ -1,4 +1,4 @@
-const restaurants = require('../Restaurants.js');
+const restaurants = require('../../classes/Restaurants');
 
 module.exports = (text) => {
 

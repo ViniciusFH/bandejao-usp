@@ -1,8 +1,8 @@
-const client = require('./client.js');
+const twitterClient = require('../../client');
 
 module.exports = (message, userID) => {
 
-	client.post('direct_messages/events/new', {
+	return twitterClient.post('direct_messages/events/new', {
 
 		event: {
 
@@ -18,7 +18,7 @@ module.exports = (message, userID) => {
 		}
 
 	},
-		(error, event, response) => {
+		(error, event) => {
 
 			if (error) console.log(error);
 

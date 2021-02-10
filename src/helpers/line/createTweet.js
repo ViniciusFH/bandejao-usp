@@ -1,11 +1,11 @@
-module.exports = (claimedRestaurants) => {
+module.exports = reportedRestaurants => {
 
 	let tweet = 'Alô! Parece que tá tendo muita fila ';
 
-	for (let instance of claimedRestaurants) {
+	for (let instance of reportedRestaurants) {
 
 		let append =
-			claimedRestaurants.indexOf(instance) === claimedRestaurants.length - 2
+			reportedRestaurants.indexOf(instance) === reportedRestaurants.length - 2
 				? ' e '
 				: ', ';  
 

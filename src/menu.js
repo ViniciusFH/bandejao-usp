@@ -1,15 +1,16 @@
+// Faz o request para o endpoint da USP com os cardápios da semana.
+const getBody = require('./helpers/menu/getBody');
+// Formata o retorno do request feito na função acima. Retorna um objeto.
+const formatBody = require('./helpers/menu/formatBody');
+// Transforma o objeto retornado na função acima e cria uma string, o tweet em si.
+const createTweet = require('./helpers/menu/createTweet');
+// Usa o client do twitter para, enfim, postar o tweet.
+const postTweet = require('./helpers/tweets/post');
+// Um objeto com todos os bandejões instanciados da classe Restaurant.
+const restaurants = require('./classes/Restaurants');
+
 async function main() {
 
-	// Faz o request para o endpoint da USP com os cardápios da semana.
-	const getBody = require('./getBody');
-	// Formata o retorno do request feito na função acima. Retorna um objeto.
-	const formatBody = require('./formatBody');
-	// Transforma o objeto retornado na função acima e cria uma string, o tweet em si.
-	const createTweet = require('./createTweet');
-	// Usa o client do twitter para, enfim, postar o tweet.
-	const postTweet = require('../api/postTweet.js');
-	// Um objeto com todos os bandejões instanciados da classe Restaurant.
-	const restaurants = require('../Restaurants.js');
 	// Nome da variável do bandejão recebida pelo comando do terminal.
 	const bandejao = restaurants[process.argv[2]];
 
@@ -35,8 +36,6 @@ async function main() {
 	if (menu.food.length) {
 
 		let tweet = createTweet(menu, bandejao)
-
-		// console.log(tweet);
 
 		postTweet(tweet);
 

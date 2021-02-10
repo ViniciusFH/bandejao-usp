@@ -80,7 +80,6 @@ function firstUpperCase(array) {
 				.slice(1)
 				.toLowerCase())
 
-	return array;
 };
 
 function saladaMix(menu) {

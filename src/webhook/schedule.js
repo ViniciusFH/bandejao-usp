@@ -1,14 +1,13 @@
-const whichRestaurants = require('./whichRestaurants');
-const whichMeals = require('./whichMeals');
-const whichDays = require('./whichDays');
-const scheduleMessage = require('./scheduleMessage');
-const sendDM = require('../api/sendDM');
-const restaurants = require('../Restaurants');
+const detectRestaurants = require('../helpers/subjectDetectors/restaurants');
+const detectMeals = require('../helpers/subjectDetectors/meals');
+const detectDaysOfTheWeek = require('../helpers/subjectDetectors/daysOfTheWeek');
+const createMessage = require('../helpers/schedule/createMessage');
+const sendDM = require('../helpers/DM/send');
 
 module.exports = (DMText, userID) => {
 
 	// Extraimos da DM os restaurantes
-	const inteRest = whichRestaurants(DMText);
+	const inteRest = detectRestaurants(DMText);
 
 	// Precisamos de ao menos um restaurante.
 	if (!inteRest.length) {
@@ -19,7 +18,7 @@ module.exports = (DMText, userID) => {
 	};
 
 	// Extraímos da DM as refeições
-	let inteMeals = whichMeals(DMText);
+	let inteMeals = detectMeals(DMText);
 
 	// Se o usuário não especifica uma refeição, informamos todas daquele restaurante
 	if (!inteMeals.length) {
@@ -27,7 +26,7 @@ module.exports = (DMText, userID) => {
 		inteMeals = ['breakfast', 'lunch', 'dinner'];
 	}
 
-	let inteDays = whichDays(DMText);
+	let inteDays = detectDaysOfTheWeek(DMText);
 
 	// Se o usuário não especifica um dia, informamos os horários dos dias de semana
 	if (!inteDays.length) {
@@ -35,7 +34,7 @@ module.exports = (DMText, userID) => {
 		inteDays = ['workingDays'];
 	};
 
-	let DMAnswer = scheduleMessage(inteRest[0], inteMeals, inteDays);
+	let DMAnswer = createMessage(inteRest[0], inteMeals, inteDays);
 
 	sendDM(DMAnswer, userID);
 
