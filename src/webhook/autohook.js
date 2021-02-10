@@ -71,8 +71,8 @@ function clearReports () {
 
 // Os reports de fila devem ser zerados entre cada refeição.
 // Os três horários abaixo estão entre as três refeições do bandejão.
-cron.schedule('0 10 * * *', clearReports).start();
-cron.schedule('0 16 * * *', clearReports).start();
-cron.schedule('0 22 * * *', clearReports).start();
+cron.schedule('0 10 * * *', clearReports, { timezone: 'America/Sao_Paulo' }).start();
+cron.schedule('0 16 * * *', clearReports, { timezone: 'America/Sao_Paulo' }).start();
+cron.schedule('0 22 * * *', clearReports, { timezone: 'America/Sao_Paulo' }).start();
 
 main();
