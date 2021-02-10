@@ -7,8 +7,9 @@
   "author": "ViniciusFH & schimidtpedro",
   "license": "MIT",
   "dependencies": {
-    "request-promise-native": "^1.0.8",
+    "axios": "^0.21.1",
+    "node-cron": "^2.0.3",
     "twit": "^2.2.11",
-    "twitter-autohook": "^1.4.1"
+    "twitter-autohook": "^1.7.2"
   }
 }
