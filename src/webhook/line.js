@@ -1,7 +1,6 @@
 const detectRestaurants = require('../helpers/subjectDetectors/restaurants');
-const createTweet = require('../helpers/line/createTweet');
-const sendDM = require('../helpers/DM/send');
-const send = require('../helpers/DM/send');
+const createTweet       = require('../helpers/line/createTweet');
+const sendDM            = require('../helpers/DM/send');
 
 module.exports = (DMText, userId) => {
 

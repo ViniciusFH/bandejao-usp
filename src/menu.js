@@ -1,13 +1,13 @@
 // Faz o request para o endpoint da USP com os cardápios da semana.
-const getBody = require('./helpers/menu/getBody');
+const getBody 		= require('./helpers/menu/getBody');
 // Formata o retorno do request feito na função acima. Retorna um objeto.
-const formatBody = require('./helpers/menu/formatBody');
+const formatBody 	= require('./helpers/menu/formatBody');
 // Transforma o objeto retornado na função acima e cria uma string, o tweet em si.
-const createTweet = require('./helpers/menu/createTweet');
+const createTweet 	= require('./helpers/menu/createTweet');
 // Usa o client do twitter para, enfim, postar o tweet.
-const postTweet = require('./helpers/tweets/post');
+const postTweet 	= require('./helpers/tweets/post');
 // Um objeto com todos os bandejões instanciados da classe Restaurant.
-const restaurants = require('./classes/Restaurants');
+const restaurants 	= require('./classes/Restaurants');
 
 async function main() {
 
